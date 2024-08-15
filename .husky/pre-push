@@ -1,0 +1,1 @@
+bun run check-branch-name && bun run lint:fix

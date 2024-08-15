@@ -1,0 +1,52 @@
+{
+  "name": "@highskore/my-foundry-template",
+  "description": "",
+  "version": "1.0.0",
+  "author": {
+    "name": "highskore",
+    "url": "https://github.com/highskore"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.1",
+    "solady": "^0.0.232"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@prb/test": "^0.6.4",
+    "codecov": "^3.8.3",
+    "forge-std": "github:foundry-rs/forge-std#v1.8.1",
+    "husky": "^9.1.4",
+    "prettier": "^3.0.0",
+    "solhint": "^3.6.2"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "forge",
+    "foundry",
+    "smart-contracts",
+    "solidity",
+    "template"
+  ],
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "clean": "rm -rf cache out coverage.json",
+    "build": "forge build",
+    "lint": "bun run lint:sol && bun run prettier:check",
+    "lint:sol": "forge fmt --check && bun solhint {script,src,test}/**/*.sol",
+    "prettier:check": "prettier --check \"**/*.{json,md,yml}\" --ignore-path \".prettierignore\"",
+    "prettier:write": "prettier --write \"**/*.{json,md,yml}\" --ignore-path \".prettierignore\"",
+    "test": "forge test",
+    "test:coverage": "forge coverage",
+    "test:coverage:report": "forge coverage --report lcov && genhtml lcov.info --branch-coverage --output-dir coverage",
+    "clean:forge": "forge clean",
+    "test:gas": "forge test --gas-report",
+    "coverage": "forge coverage --ir-minimum",
+    "coverage:report": "scripts/foundry/generate_coverage_report.sh",
+    "deploy:forge": "forge script scripts/solidity/Deploy.s.sol --broadcast --rpc-url http://localhost:8545",
+    "lint:fix": "bun prettier --write '**/*.{json,md,yml}' && bun solhint '{script,src,test}/**/*.sol' --fix && forge fmt",
+    "check-branch-name": "node .github/scripts/checkBranchNames.js"
+  }
+}

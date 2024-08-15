@@ -1,0 +1,3 @@
+add.t.sol
+└──  when a and b are passed
+    └── it should return a + b
