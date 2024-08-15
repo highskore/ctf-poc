@@ -10,10 +10,12 @@ contract Entry_add is Entry_Test {
                                  TESTS
     //////////////////////////////////////////////////////////////*/
 
-    function test_add() public {
-        uint256 a = 1;
-        uint256 b = 2;
-        uint256 c = entry.add(a, b);
-        assertEq(c, 3);
+    function test_check_calldata() public {
+        bytes memory payload = abi.encodeWithSelector(entry.add.selector, 1, 2);
+        (bool success, bytes memory retData) =
+            extraSafeExternalCall.callContractSafe{ gas: 20_000 }(payload, address(entry), 5000);
+        assertTrue(success, "Call failed");
+        uint256 result = abi.decode(retData, (uint256));
+        assertEq(result, 3, "Incorrect result");
     }
 }

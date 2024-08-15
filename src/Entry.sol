@@ -86,7 +86,7 @@ contract Entry is IEntry {
     /// @param b The second number
     /// @return The sum of the two numbers
     function add(uint256 a, uint256 b) external pure returns (uint256) {
-        return a.add(b);
+        return (a.add(b));
     }
 
     /*//////////////////////////////////////////////////////////////

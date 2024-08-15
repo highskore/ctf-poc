@@ -3,6 +3,7 @@ pragma solidity >=0.8.25;
 
 // Contracts
 import { Entry } from "@src/Entry.sol";
+import { ExtraSafeExternalCall } from "@src/ExtraSafeExternalCall.sol";
 
 // Test
 import { Base_Test } from "@test/Base.t.sol";
@@ -14,6 +15,7 @@ contract Entry_Test is Base_Test {
     //////////////////////////////////////////////////////////////*/
 
     Entry entry;
+    ExtraSafeExternalCall extraSafeExternalCall;
 
     /*//////////////////////////////////////////////////////////////
                                  SETUP
@@ -22,5 +24,6 @@ contract Entry_Test is Base_Test {
     function setUp() public virtual override {
         super.setUp();
         entry = new Entry(1);
+        extraSafeExternalCall = new ExtraSafeExternalCall();
     }
 }
