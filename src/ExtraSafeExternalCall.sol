@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.8.2 <0.9.0;
+pragma solidity >=0.8.25;
 
 contract ExtraSafeExternalCall {
     bytes4 internal constant NO_CONTRACT_SIG = 0x0c3b563c;
